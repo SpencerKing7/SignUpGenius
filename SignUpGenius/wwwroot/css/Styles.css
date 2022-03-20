@@ -1,0 +1,97 @@
+﻿.cartInfo {
+    padding-right: 5px;
+}
+
+.bookInfoList {
+    margin-top: 15px;
+    font-size: medium
+}
+
+.bookInfoText {
+    font-size: large;
+}
+
+.bookTitle {
+    padding-left: 25px;
+}
+
+.myBtn {
+    margin: 3px;
+}
+
+.color-byu {
+    background-color: rgb(0, 45, 95);
+    color: white;
+}
+
+.bg-byu {
+    background-color: rgb(0, 45, 95);
+    color: white;
+}
+
+.color-byu:hover {
+    background-color: rgb(0, 45, 95);
+    color: white;
+}
+
+.text-byu {
+    color: rgb(0, 45, 95);
+}
+
+.btn-byu {
+    background-color: rgb(0, 45, 95);
+    color: white;
+}
+
+.btn-byu-outline {
+    background-color: white;
+    color: rgb(0, 45, 95);
+    border-radius: 3px;
+}
+
+    .btn-byu-outline:hover {
+        background-color: rgb(13, 110, 253);
+        color: white;
+        border-radius: 3px;
+    }
+
+.btn-byu:hover {
+    background-color: rgb(13, 110, 253);
+    color: white;
+}
+
+.btn-create{
+
+}
+
+.btn-edit {
+    background-color: rgb(9, 49, 100);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: rgb(13, 110, 253);
+    color: white;
+}
+
+.btn-delete{
+
+}
+
+.btn-category{
+    min-width: 145px;
+}
+
+.price{
+    font-size:medium;
+    font-weight: bold;
+}
+
+.footer {
+    position: fixed;
+    left: 20px;
+    bottom: 30px;
+    width: inherit;
+    color: black;
+    text-align: center;
+}
