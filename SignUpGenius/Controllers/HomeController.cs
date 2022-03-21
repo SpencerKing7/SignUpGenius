@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SignUpGenius.Models;
+using SignUpGenius.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,16 +12,36 @@ namespace SignUpGenius.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IAppointmentRepository repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAppointmentRepository temp)
         {
-            _logger = logger;
+           repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(DateTime tourTime, int pageNum = 1)
         {
-            return View();
+            //Determine the number of Books on a page
+            int pageSize = 10;
+
+            var x = new ToursViewModel
+            {
+                Appointments = repo.Appointments
+                //.Where(a => a.AppointmentTime >= tourTime || tourTime == null) //Helps sort by day when selected by user
+                .OrderBy(a => a.AppointmentTime) // Orders all displayed Books in alphabetical order
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                TourInfo = new TourInfo
+                {
+                    //Gets inmportant Book info - If no category gets info for all books, other wise info is filtered by the selected category
+                    TotalNumTours = repo.Appointments.Count(), //( == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategory).Count()),
+                    ToursPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            return View(x);
         }
     }
 }

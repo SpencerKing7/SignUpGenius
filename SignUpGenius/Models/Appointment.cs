@@ -13,9 +13,6 @@ namespace SignUpGenius.Models
         public int AppointmentId { get; set; }
 
         [Required]
-        public DateTime ApptTime { get; set; }
-
-        [Required]
         public string GroupName { get; set; }
 
         [Required]
@@ -23,9 +20,11 @@ namespace SignUpGenius.Models
 
         [Required]
         public string Email { get; set; }
+        
         [Phone(ErrorMessage = "Type a valid 10 digit phone number")]
         public string Phone { get; set; }
 
+        //Foreign Keys
         public int TimeId { get; set; }
         public AppointmentTime AppointmentTime { get; set; }
     }
