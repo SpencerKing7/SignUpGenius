@@ -2,12 +2,25 @@
     ViewData["Title"] = "Appointment Signup";
 }
 
-@model Appointment
+@model AppointmentTime
 
 <h1 class="card-title text-byu mt-4">Select a time for your tour:</h1>
 
-<div class="row m-1 p-1">
+@*<div class="row m-1 p-1">
     <div class="d-grid gap-2">
         <a asp-controller="Home" asp-action="SignUpForm" class="btn btn-byu">8:00 am</a>
     </div>
+</div>*@
+
+<div>
+
+    <form method="post">
+
+        @foreach (AppointmentTime t in Model.Time)
+            {
+                <button type="submit" value="@t.Time">@t.Time</button>
+            }
+
+    </form>
+
 </div>
