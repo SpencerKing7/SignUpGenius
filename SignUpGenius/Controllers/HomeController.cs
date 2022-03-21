@@ -43,5 +43,15 @@ namespace SignUpGenius.Controllers
 
             return View(x);
         }
+
+        public IActionResult SignUpTimes()
+        {
+            return View();
+        }
+
+        public IActionResult SignUpForm()
+        {
+            return View();
+        }
     }
 }

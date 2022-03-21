@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Appointment Signup";
+}
+
+@model Appointment
+
+<h1 class="card-title text-byu mt-4">Sign Up for a Temple Tour</h1>
+
+<div>
+    <form method="post">
+        <div class="form-group">
+            <label>Time:</label>
+            <input class="form-control" disabled value="AppointmentTime" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupName">Group Name:</label>
+            <input class="form-control" asp-for="GroupName" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupSize">Size of Group:</label>
+            <input class="form-control" type="number" max="15" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email">Email:</label>
+            <input class="form-control" type="email" asp-for="Email" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone">Phone:</label>
+            <input class="form-control" asp-for="Phone" /><br />
+        </div>
+
+        <button class="btn btn-outline-primary btn-primary" type="submit">Submit</button>
+    </form>
+
+</div>
