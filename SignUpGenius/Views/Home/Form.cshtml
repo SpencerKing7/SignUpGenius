@@ -1,4 +1,4 @@
-﻿@model SignUpGenius.Models.Appointment
+﻿@model Appointment
 @{
     ViewData["Title"] = "Appointment Signup";
 }
@@ -6,19 +6,24 @@
 <h1>Sign Up for a Temple Tour</h1>
 
 <div>
-    <form method="post">
-        <label asp-for="GroupName">Group Name:</label>
-        <input asp-for="GroupName" /><br />
+    <form method="post" class="form-group">
 
-        <label asp-for="GroupSize">Size of Group:</label>
-        <input type="number" max="15" /><br />
+        @*I'm not 100% sure this is needed yet*@
+        <input type="hidden" class="form-control" asp-for="@Model.AppointmentId" />
+        <input type="hidden" class="form-control" asp-for="@Model.ApptTime" />
+
+        <label asp-for="GroupName">Group Name:</label>
+        <input class="form-control" asp-for="GroupName" /><br />
+
+        <label asp-for="GroupSize">Size of Group(1 to 15):</label>
+        <input type="number" class="form-control" max="15" /><br />
 
         <label asp-for="Email">Email:</label>
-        <input type="email" asp-for="Email" /><br />
+        <input type="email" class="form-control" asp-for="Email" /><br />
 
         <label asp-for="Phone">Phone:</label>
-        <input asp-for="Phone" /><br />
+        <input class="form-control" asp-for="Phone" /><br />
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-success btn-sm float-end">Submit</button>
     </form>
 </div>
