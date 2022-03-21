@@ -19,7 +19,7 @@ namespace SignUpGenius.Controllers
            repo = temp;
         }
 
-        public IActionResult Index(DateTime tourTime, int pageNum = 1)
+        public IActionResult Index(int pageNum = 1)
         {
             //Determine the number of Books on a page
             int pageSize = 10;

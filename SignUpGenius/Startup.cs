@@ -31,6 +31,16 @@ namespace SignUpGenius
             {
                 options.UseSqlite(Configuration["ConnectionStrings:SignUpDBConnection"]);
             });
+
+            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
