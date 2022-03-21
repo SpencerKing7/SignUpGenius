@@ -2,7 +2,7 @@
     ViewData["Title"] = "Appointment Signup";
 }
 
-@model AppointmentTime
+@model IEnumerable<string>
 
 <h1 class="card-title text-byu mt-4">Select a time for your tour:</h1>
 
@@ -16,10 +16,10 @@
 
     <form method="post">
 
-        @foreach (AppointmentTime t in Model.Time)
+        @*@foreach (string t in Model)
             {
                 <button type="submit" value="@t.Time">@t.Time</button>
-            }
+            }*@
 
     </form>
 
