@@ -7,6 +7,6 @@ namespace SignUpGenius.Models
 {
     public interface ITimeRepository
     {
-        public IQueryable<AppointmentTime> Times { get; }
+        public IQueryable<AppointmentTime> AppointmentTimes { get; }
     }
 }

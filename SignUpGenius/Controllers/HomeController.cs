@@ -13,10 +13,12 @@ namespace SignUpGenius.Controllers
     public class HomeController : Controller
     {
         private IAppointmentRepository repo;
+        private ITimeRepository repoT;
 
-        public HomeController(IAppointmentRepository temp)
+        public HomeController(IAppointmentRepository temp, ITimeRepository tempT)
         {
            repo = temp;
+           repoT = tempT;
         }
 
         public IActionResult Index()
@@ -24,10 +26,22 @@ namespace SignUpGenius.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUpTimes()
         {
-            return View();
+            var x = new TimeViewModel
+            {
+                AppointmentTimes = repoT.AppointmentTimes
+            };
+
+            return View(x);
         }
+
+        //[HttpPost]
+        //public IActionResult SignUpTimes()
+        //{
+        //    return View();
+        //}
 
         public IActionResult SignUpForm()
         {
@@ -39,7 +53,7 @@ namespace SignUpGenius.Controllers
             //Determine the number of Books on a page
             int pageSize = 10;
 
-            var x = new ToursViewModel
+            var x = new AppointmentViewModel
             {
                 Appointments = repo.Appointments
                 //.Where(a => a.AppointmentTime >= tourTime || tourTime == null) //Helps sort by day when selected by user
@@ -47,7 +61,7 @@ namespace SignUpGenius.Controllers
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
-                TourInfo = new TourInfo
+                TourInfo = new AppointmentInfo
                 {
                     //Gets inmportant Book info - If no category gets info for all books, other wise info is filtered by the selected category
                     TotalNumTours = repo.Appointments.Count(), //( == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategory).Count()),

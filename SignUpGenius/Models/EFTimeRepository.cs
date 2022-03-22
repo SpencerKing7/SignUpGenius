@@ -14,6 +14,6 @@ namespace SignUpGenius.Models
             context = temp;
         }
 
-        public IQueryable<AppointmentTime> Times => context.AppointmentTimes;
+        public IQueryable<AppointmentTime> AppointmentTimes => context.AppointmentTimes;
     }
 }
