@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+@model Appointment
+
+<h1 class="card-title text-byu mt-4">Edit a previous Temple Tour appointment</h1>
+
+<div>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Time">Time:</label>
+            <input disabled class="form-control" asp-for="Time" value="@ViewBag.apt.Time" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date">Date:</label>
+            <input disabled class="form-control" asp-for="Date" value="@ViewBag.apt.Date" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupName">Group Name:</label>
+            <input class="form-control" asp-for="GroupName" value="@ViewBag.apt.GroupName" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupSize">Size of Group:</label>
+            <input class="form-control" asp-for="GroupSize" type="number" max="15" value="@ViewBag.apt.GroupSize" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email">Email:</label>
+            <input class="form-control" type="email" asp-for="Email" value="@ViewBag.apt.Email" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone">Phone:</label>
+            <input class="form-control" asp-for="Phone" value="@ViewBag.apt.Phone" /><br />
+        </div>
+
+        <button class="btn btn-outline-primary btn-primary" type="submit">Submit</button>
+    </form>
+
+</div>

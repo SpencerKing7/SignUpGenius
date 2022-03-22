@@ -48,6 +48,14 @@ namespace SignUpGenius.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult EditForm(int aptid)
+        {
+            ViewBag.apt = repo.Appointments.Single(a => a.AppointmentId == aptid);
+
+            return View();
+        }
+
         public IActionResult Appointments(int pageNum = 1)
         {
             //Determine the number of Books on a page
