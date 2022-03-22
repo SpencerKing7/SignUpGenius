@@ -49,9 +49,17 @@ namespace SignUpGenius.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUpForm()
         {
-            return View();
+            return View(new Appointment());
+        }
+
+        [HttpPost]
+        public IActionResult SignUpForm(Appointment appointment)
+        {
+            repo.SaveAppointment(appointment);
+            return RedirectToPage("/Index");
         }
     }
 }
