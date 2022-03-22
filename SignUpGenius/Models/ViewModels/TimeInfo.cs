@@ -12,6 +12,6 @@ namespace SignUpGenius.Models.ViewModels
         public int CurrentPage { get; set; }
 
         //Figure out how many pages we need + Rounding
-        public int TotalTours => (int)Math.Ceiling((double)TotalNumTours / ToursPerPage);
+        public int TotalPages => (int)Math.Ceiling((double)TotalNumTours / ToursPerPage);
     }
 }

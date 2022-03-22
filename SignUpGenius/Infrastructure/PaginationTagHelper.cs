@@ -38,7 +38,7 @@ namespace SignUpGenius.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PageInator.TotalTours; i++)
+            for (int i = 1; i < PageInator.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 

@@ -60,38 +60,41 @@ namespace SignUpGenius.Controllers
         {
             ViewBag.Time = repoT.AppointmentTimes.Single(t => t.TimeId == id);
 
-            return View();
+            return View(new Appointment());
         }
 
-        [HttpGet]
-        public IActionResult EditForm(int aptid)
+        //[HttpGet]
+        //public IActionResult SignUpForm()
+        //{
+        //    return View(new Appointment());
+        //}
+
+        [HttpPost]
+        public IActionResult SignUpForm(Appointment a)
         {
-            ViewBag.apt = repo.Appointments.Single(a => a.AppointmentId == aptid);
+            repo.CreateAppointment(a);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Appointments(int pageNum = 1)
+        public IActionResult Appointments()
         {
 
             var x = new AppointmentViewModel
             {
                 Appointments = repo.Appointments
-                //.Where(a => a.AppointmentTime >= tourTime || tourTime == null) //Helps sort by day when selected by user
                 .OrderBy(a => a.Time) // Orders all displayed Books in alphabetical order
-                //.Skip((pageNum - 1) * pageSize)
-                //.Take(pageSize),
-
-                //TourInfo = new AppointmentInfo
-                //{
-                //    //Gets inmportant Book info - If no category gets info for all books, other wise info is filtered by the selected category
-                //    TotalNumTours = repo.Appointments.Count(), //( == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategory).Count()),
-                //    ToursPerPage = pageSize,
-                //    CurrentPage = pageNum
-                //}
             };
 
             return View(x);
         }
+
+        //[HttpGet]
+        //public IActionResult Delete(int aptid)
+        //{
+        //    repo.DeleteAppointment(x => aptid);
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }
