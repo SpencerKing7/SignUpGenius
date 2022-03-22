@@ -66,14 +66,14 @@ namespace SignUpGenius.Controllers
         //[HttpGet]
         //public IActionResult SignUpForm()
         //{
-        //    return View(new Appointment());
+        //    return View();
         //}
 
         [HttpPost]
         public IActionResult SignUpForm(Appointment a)
         {
             repo.CreateAppointment(a);
-            repo.SaveAppointment(a);
+            //repo.SaveAppointment(a);
             return RedirectToAction("Index");
         }
 
