@@ -71,6 +71,5 @@ namespace SignUpGenius.Controllers
             };
 
             return View(x);
-        }
     }
 }
