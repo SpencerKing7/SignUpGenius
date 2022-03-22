@@ -64,11 +64,17 @@ namespace SignUpGenius.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditForm(int aptid)
+        public IActionResult SignUpForm()
         {
-            ViewBag.apt = repo.Appointments.Single(a => a.AppointmentId == aptid);
+            return View(new Appointment());
+        }
 
-            return View();
+        [HttpPost]
+        public IActionResult SignUpForm(Appointment a)
+        {
+            repo.CreateAppointment(a);
+            repo.SaveAppointment(a);
+            return RedirectToPage("/Index");
         }
 
         public IActionResult Appointments(int pageNum = 1)
