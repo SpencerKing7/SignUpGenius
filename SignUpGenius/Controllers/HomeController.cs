@@ -13,10 +13,12 @@ namespace SignUpGenius.Controllers
     public class HomeController : Controller
     {
         private IAppointmentRepository repo;
+        private ITimeRepository repoT;
 
-        public HomeController(IAppointmentRepository temp)
+        public HomeController(IAppointmentRepository temp, ITimeRepository tempT)
         {
            repo = temp;
+           repoT = tempT;
         }
 
         public IActionResult Index()
@@ -24,10 +26,22 @@ namespace SignUpGenius.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUpTimes()
         {
-            return View();
+            var x = new TimeViewModel
+            {
+                AppointmentTimes = repoT.AppointmentTimes
+            };
+
+            return View(x);
         }
+
+        //[HttpPost]
+        //public IActionResult SignUpTimes()
+        //{
+        //    return View();
+        //}
 
         public IActionResult SignUpForm()
         {

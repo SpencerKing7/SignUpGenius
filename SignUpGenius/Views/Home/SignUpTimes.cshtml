@@ -2,15 +2,15 @@
     ViewData["Title"] = "Appointment Signup";
 }
 
-@model IEnumerable<string>
+
 
 <h1 class="card-title text-byu mt-4">Select a time for your tour:</h1>
 
 
 <div class="d-grid gap-2">
 
-    @foreach (string t in Model)
-            {
-                <a asp-controller="Home" asp-action="SignUpForm" asp-route=""></a>
-            }
+    @foreach (AppointmentTime t in Model.AppointmentTimes)
+    {
+        <a asp-controller="Home" asp-action="SignUpForm" class="btn btn-byu btn-byu-outline">@t.Time --- @t.Date</a>
+    }
 </div>
