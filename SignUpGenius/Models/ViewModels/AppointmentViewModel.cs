@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace SignUpGenius.Models.ViewModels
 {
-    public class ToursViewModel
+    public class AppointmentViewModel
     {
         public IQueryable<Appointment> Appointments { get; set; }
 
-        public TourInfo TourInfo { get; set; }
+        public AppointmentInfo TourInfo { get; set; }
     }
 }

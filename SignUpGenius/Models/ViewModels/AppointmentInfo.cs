@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SignUpGenius.Models.ViewModels
 {
-    public class TourInfo
+    public class AppointmentInfo
     {
         public int TotalNumTours { get; set; }
         public int ToursPerPage { get; set; }
