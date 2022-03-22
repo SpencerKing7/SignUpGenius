@@ -33,6 +33,7 @@ namespace SignUpGenius
             });
 
             services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
+            services.AddScoped<ITimeRepository, EFTimeRepository>();
 
             services.AddRazorPages();
 
