@@ -63,17 +63,11 @@ namespace SignUpGenius.Controllers
             return View(new Appointment());
         }
 
-        //[HttpGet]
-        //public IActionResult SignUpForm()
-        //{
-        //    return View(new Appointment());
-        //}
-
         [HttpPost]
         public IActionResult SignUpForm(Appointment a)
         {
             repo.CreateAppointment(a);
-            repo.SaveAppointment(a);
+
             return RedirectToAction("Index");
         }
 
@@ -88,5 +82,13 @@ namespace SignUpGenius.Controllers
 
             return View(x);
         }
+
+        //[HttpGet]
+        //public IActionResult Delete(int aptid)
+        //{
+        //    repo.DeleteAppointment(x => aptid);
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }
