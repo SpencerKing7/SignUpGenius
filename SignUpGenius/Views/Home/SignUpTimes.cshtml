@@ -2,16 +2,21 @@
     ViewData["Title"] = "Appointment Signup";
 }
 
-
+@model TimeViewModel
 
 <h1 class="card-title text-byu mt-4">Select a time for your tour:</h1>
 
-
-<div class="col">
-
-        @foreach (AppointmentTime t in ViewBag.AppointmentTimes)
-        {
-            <a asp-controller="Home" asp-action="SignUpForm" asp-route-id="@t.TimeId" class="btn btn-secondary text-white">@t.Time --- @t.Date</a><br /><br />
-        }
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="d-grid gap-2">
+                @foreach (AppointmentTime t in ViewBag.AppointmentTimes)
+                {
+                    <a asp-controller="Home" asp-action="SignUpForm" asp-route-id="@t.TimeId" class="btn btn-block btn-secondary text-white">@t.Time --- @t.Date</a>
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
+<partial name="Pagination" />
