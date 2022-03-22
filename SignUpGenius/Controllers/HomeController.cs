@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SignUpGenius.Models;
 using SignUpGenius.Models.ViewModels;
@@ -87,6 +88,38 @@ namespace SignUpGenius.Controllers
             };
 
             return View(x);
+        }
+
+        [HttpGet]
+        public IActionResult EditForm(int aptId)
+        {
+            var appointment = repo.Appointments.Single(x => x.AppointmentId == aptId);
+
+            return View("EditForm", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult EditForm(Appointment a)
+        {
+            repo.SaveAppointment(a);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int aptId)
+        {
+            var appointment = repo.Appointments.Single(x => x.AppointmentId == aptId);
+
+            return View("Delete", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Appointment a)
+        {
+            repo.DeleteAppointment(a);
+
+            return RedirectToAction("Appointments");
         }
 
         //[HttpGet]
