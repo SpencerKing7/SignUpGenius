@@ -63,6 +63,12 @@ namespace SignUpGenius.Controllers
             return View(new Appointment());
         }
 
+        //[HttpGet]
+        //public IActionResult SignUpForm()
+        //{
+        //    return View(new Appointment());
+        //}
+
         [HttpPost]
         public IActionResult SignUpForm(Appointment a)
         {
