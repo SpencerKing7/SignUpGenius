@@ -45,7 +45,9 @@ namespace SignUpGenius.Controllers
                     TotalNumTours = (time == null 
                         ? repoT.AppointmentTimes.Count()
                         : repoT.AppointmentTimes.Where(x => x.Time == time).Count()),
+
                     ToursPerPage = pageSize,
+
                     CurrentPage = pageNum
                 }
             };
