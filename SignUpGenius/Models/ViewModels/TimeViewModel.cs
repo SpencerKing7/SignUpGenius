@@ -7,6 +7,7 @@ namespace SignUpGenius.Models.ViewModels
 {
     public class TimeViewModel
     {
-        public IQueryable<AppointmentTime> AppointmentTimes { get; set; }
+        public IQueryable<AppointmentTime> Times { get; set; }
+        public TimeInfo TimeInfo { get; set; }
     }
 }

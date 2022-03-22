@@ -9,6 +9,6 @@ namespace SignUpGenius.Models.ViewModels
     {
         public IQueryable<Appointment> Appointments { get; set; }
 
-        public AppointmentInfo TourInfo { get; set; }
+        public TimeInfo TourInfo { get; set; }
     }
 }
