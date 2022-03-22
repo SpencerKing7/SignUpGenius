@@ -19,7 +19,22 @@ namespace SignUpGenius.Controllers
            repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult SignUpTimes()
+        {
+            return View();
+        }
+
+        public IActionResult SignUpForm()
+        {
+            return View();
+        }
+
+        public IActionResult Appointments(int pageNum = 1)
         {
             //Determine the number of Books on a page
             int pageSize = 10;
@@ -28,7 +43,7 @@ namespace SignUpGenius.Controllers
             {
                 Appointments = repo.Appointments
                 //.Where(a => a.AppointmentTime >= tourTime || tourTime == null) //Helps sort by day when selected by user
-                .OrderBy(a => a.AppointmentTime) // Orders all displayed Books in alphabetical order
+                .OrderBy(a => a.Time) // Orders all displayed Books in alphabetical order
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -42,24 +57,5 @@ namespace SignUpGenius.Controllers
             };
 
             return View(x);
-        }
-
-        public IActionResult SignUpTimes()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult SignUpForm()
-        {
-            return View(new Appointment());
-        }
-
-        [HttpPost]
-        public IActionResult SignUpForm(Appointment appointment)
-        {
-            repo.SaveAppointment(appointment);
-            return RedirectToPage("/Index");
-        }
     }
 }

@@ -1,0 +1,40 @@
+﻿@{
+}
+
+<table class="table table-bordered table-striped mt-3">
+
+    <thead class="color-byu">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Group Name</th>
+            <th>Group Size</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @* For all the appointments display the Date, time, group name, group size, email, and phone *@
+        @foreach (Appointment a in Model.Appointments)
+        {
+            <tr>
+                <td>@a.Date</td>
+                <td>@a.Time</td>
+                <td>@a.GroupName</td>
+                <td>@a.GroupSize</td>
+                <td>@a.Email</td>
+                <td>@a.Phone</td>
+                <td>
+                    <NavLink class="btn btn-primary btn-sm">Edit</NavLink>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+
+</table>
