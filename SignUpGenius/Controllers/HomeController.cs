@@ -17,8 +17,8 @@ namespace SignUpGenius.Controllers
 
         public HomeController(IAppointmentRepository temp, ITimeRepository tempT)
         {
-           repo = temp;
-           repoT = tempT;
+            repo = temp;
+            repoT = tempT;
         }
 
         public IActionResult Index()
@@ -43,9 +43,18 @@ namespace SignUpGenius.Controllers
         //    return View();
         //}
 
+        [HttpGet]
         public IActionResult SignUpForm()
         {
-            return View();
+            return View(new Appointment());
+        }
+
+        [HttpPost]
+        public IActionResult SignUpForm(Appointment a)
+        {
+            repo.CreateAppointment(a);
+            repo.SaveAppointment(a);
+            return RedirectToPage("/Index");
         }
 
         public IActionResult Appointments(int pageNum = 1)
@@ -71,5 +80,6 @@ namespace SignUpGenius.Controllers
             };
 
             return View(x);
+        }
     }
 }

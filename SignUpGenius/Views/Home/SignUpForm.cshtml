@@ -7,10 +7,10 @@
 <h1 class="card-title text-byu mt-4">Sign Up for a Temple Tour</h1>
 
 <div>
-    <form method="post">
+    <form method="post" asp-action="SignUpForm">
         <div class="form-group">
             <input type="hidden" class="form-control" asp-for="@Model.AppointmentId"/>
-            <input type="hidden" class="form-control" asp-for="@Model.TimeId" />
+            <input type="hidden" class="form-control" asp-for="@Model.Time" />
         </div>
 
         <div class="form-group">
