@@ -7,10 +7,15 @@
 <h1 class="card-title text-byu mt-4">Sign Up for a Temple Tour</h1>
 
 <div>
-    <form method="post">
+    <form method="post" asp-action="SignUpForm">
+        <div class="form-group">
+            <label asp-for="Time">Time:</label>
+            <input disabled class="form-control" asp-for="Time" value="@ViewBag.Time.Time" />
+        </div>
+
         <div class="form-group">
             <label asp-for="Date">Date:</label>
-            <input disabled class="form-control" asp-for="Date" value="@ViewBag.Time.Date"/>
+            <input disabled class="form-control" asp-for="Date" value="@ViewBag.Time.Date" />
         </div>
 
         <div class="form-group">
@@ -20,7 +25,7 @@
 
         <div class="form-group">
             <label asp-for="GroupSize">Size of Group:</label>
-            <input class="form-control" type="number" max="15" /><br />
+            <input class="form-control" type="number" max="15" asp-for="GroupSize"/><br />
         </div>
 
         <div class="form-group">
