@@ -66,9 +66,9 @@ namespace SignUpGenius
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("Paging",
-                    "Page{pageNum}",
-                    new { Controller = "Home", action = "SignUpTimes", pageNum = 1 });
+                //endpoints.MapControllerRoute("Paging",
+                //    "Page{pageNum}",
+                //    new { Controller = "Home", action = "SignUpTimes", pageNum = 1 });
 
                 endpoints.MapControllerRoute(
                     name: "default",
