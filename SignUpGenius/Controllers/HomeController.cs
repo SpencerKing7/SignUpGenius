@@ -17,8 +17,8 @@ namespace SignUpGenius.Controllers
 
         public HomeController(IAppointmentRepository temp, ITimeRepository tempT)
         {
-           repo = temp;
-           repoT = tempT;
+            repo = temp;
+            repoT = tempT;
         }
 
         public IActionResult Index()
@@ -29,12 +29,9 @@ namespace SignUpGenius.Controllers
         [HttpGet]
         public IActionResult SignUpTimes()
         {
-            var x = new TimeViewModel
-            {
-                AppointmentTimes = repoT.AppointmentTimes
-            };
+            ViewBag.AppointmentTimes = repoT.AppointmentTimes.ToList();
 
-            return View(x);
+            return View();
         }
 
         //[HttpPost]
@@ -43,8 +40,11 @@ namespace SignUpGenius.Controllers
         //    return View();
         //}
 
-        public IActionResult SignUpForm()
+        [HttpGet]
+        public IActionResult SignUpForm(int id)
         {
+            ViewBag.Time = repoT.AppointmentTimes.Single(t => t.TimeId == id);
+
             return View();
         }
 
@@ -71,5 +71,6 @@ namespace SignUpGenius.Controllers
             };
 
             return View(x);
+        }
     }
 }
