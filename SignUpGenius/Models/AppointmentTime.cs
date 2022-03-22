@@ -11,6 +11,8 @@ namespace SignUpGenius.Models
         [Key]
         [Required]
         public int TimeId { get; set; }
+
+        public string Date { get; set; }
         public string Time { get; set; }
 
         public bool Available { get; set; }

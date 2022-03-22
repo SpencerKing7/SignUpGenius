@@ -24,8 +24,7 @@ namespace SignUpGenius.Models
         [Phone(ErrorMessage = "Type a valid 10 digit phone number")]
         public string Phone { get; set; }
 
-        //Foreign Keys
-        public int TimeId { get; set; }
-        public AppointmentTime AppointmentTime { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }
