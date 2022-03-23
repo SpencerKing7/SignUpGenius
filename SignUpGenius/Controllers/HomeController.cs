@@ -32,12 +32,12 @@ namespace SignUpGenius.Controllers
         {
             ViewBag.AppointmentTimes = repoT.AppointmentTimes.ToList();
 
-            int pageSize = 12;
+            int pageSize = 13;
 
             var x = new TimeViewModel
             {
                 Times = repoT.AppointmentTimes
-                .Where(x => x.Time == time || time == null)
+                //.Where(x => x.Time == time || time == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
