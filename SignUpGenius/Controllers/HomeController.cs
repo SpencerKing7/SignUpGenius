@@ -103,7 +103,7 @@ namespace SignUpGenius.Controllers
         {
             repo.SaveAppointment(a);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Appointments");
         }
 
         [HttpGet]
