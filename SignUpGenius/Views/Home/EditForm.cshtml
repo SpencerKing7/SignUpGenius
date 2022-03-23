@@ -8,7 +8,11 @@
 
 <div>
 
-    <form method="post">
+    <form method="post" asp-action="EditForm">
+        <div class="form-group">
+            <input type="hidden" asp-for="AppointmentId" value="@Model.AppointmentId" />
+        </div>
+
         <div class="form-group">
             <label asp-for="Time">Time:</label>
             <input disabled class="form-control" asp-for="Time" value="@Model.Time" />
