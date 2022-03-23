@@ -16,5 +16,10 @@ namespace SignUpGenius.Models
 
         public IQueryable<AppointmentTime> AppointmentTimes => context.AppointmentTimes;
 
+        public void SaveTime(AppointmentTime at)
+        {
+            context.Update(at);
+            context.SaveChanges();
+        }
     }
 }
