@@ -16,6 +16,7 @@ namespace SignUpGenius.Models
         public string GroupName { get; set; }
 
         [Required]
+        [Range(0, 15)]
         public byte GroupSize { get; set; }
 
         [Required]

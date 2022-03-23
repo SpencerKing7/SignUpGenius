@@ -32,12 +32,12 @@ namespace SignUpGenius.Controllers
         {
             ViewBag.AppointmentTimes = repoT.AppointmentTimes.ToList();
 
-            int pageSize = 12;
+            int pageSize = 13;
 
             var x = new TimeViewModel
             {
                 Times = repoT.AppointmentTimes
-                .Where(x => x.Time == time || time == null)
+                //.Where(x => x.Time == time || time == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -64,15 +64,16 @@ namespace SignUpGenius.Controllers
             return View(new Appointment());
         }
 
-        //[HttpGet]
-        //public IActionResult SignUpForm()
-        //{
-        //    return View(new Appointment());
-        //}
-
         [HttpPost]
         public IActionResult SignUpForm(Appointment a)
         {
+            var x = repoT.AppointmentTimes
+                .Single(t => (t.Time == a.Time && t.Date == a.Date));
+
+            x.Available = false;
+
+            repoT.SaveTime(x);
+
             repo.CreateAppointment(a);
 
             return RedirectToAction("Index");
@@ -107,7 +108,7 @@ namespace SignUpGenius.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int aptId)
+        public IActionResult DeletePage(int aptId)
         {
             var appointment = repo.Appointments.Single(x => x.AppointmentId == aptId);
 
@@ -117,7 +118,16 @@ namespace SignUpGenius.Controllers
         [HttpPost]
         public IActionResult Delete(Appointment a)
         {
-            repo.DeleteAppointment(a);
+            var apt = repo.Appointments.Single(x => x.AppointmentId == a.AppointmentId);
+
+            var x = repoT.AppointmentTimes
+                .Single(t => (t.Time == apt.Time && t.Date == apt.Date));
+
+            x.Available = true;
+
+            repoT.SaveTime(x);
+
+            repo.DeleteAppointment(apt);
 
             return RedirectToAction("Appointments");
         }

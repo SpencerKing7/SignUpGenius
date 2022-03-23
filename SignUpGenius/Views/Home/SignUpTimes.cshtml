@@ -10,14 +10,22 @@
     <div class="row">
         <div class="col">
             <div class="d-grid gap-2">
-                @foreach (AppointmentTime t in ViewBag.AppointmentTimes)
+                @foreach (AppointmentTime t in Model.Times)
                 {
-                    <a asp-controller="Home" asp-action="SignUpForm" asp-route-id="@t.TimeId" class="btn btn-block btn-secondary text-white">@t.Time --- @t.Date</a>
+                    @if (t.Available == true)
+                    {
+                        <a asp-controller="Home" asp-action="SignUpForm" asp-route-id="@t.TimeId" class="btn btn-block btn-secondary text-white">@t.Time --- @t.Date</a>
+                    }
+                    else
+                    {
+                        <div class="btn btn-block btn-dark">@t.Time --- @t.Date </div>
+                    }
+
                 }
             </div>
         </div>
     </div>
-
+    <br />
     <div page-inator="@Model.TimeInfo" page-action="SignUpTimes" page-classes-enabled="true"
          page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
          class="btn-group m-1">
