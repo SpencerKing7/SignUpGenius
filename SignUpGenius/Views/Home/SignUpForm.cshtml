@@ -7,7 +7,7 @@
 <h1 class="card-title text-byu mt-4">Sign Up for a Temple Tour</h1>
 
 <div>
-    <form method="post" asp-action="SignUpForm">
+    <form method="post" asp-action="SignUpForm">   
         <div class="form-group">
             <label asp-for="Time">Time:</label>
             <input disabled class="form-control" asp-for="Time" value="@ViewBag.Time.Time" />
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Date">Date:</label>
+            <label asp-for="Date">Day:</label>
             <input disabled class="form-control" asp-for="Date" value="@ViewBag.Time.Date" />
             <input type="hidden" asp-for="Date" value="@ViewBag.Time.Date" />
         </div>

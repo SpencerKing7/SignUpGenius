@@ -8,35 +8,41 @@
 
 <div>
 
-    <form method="post">
+    <form method="post" asp-action="EditForm">
         <div class="form-group">
-            <label asp-for="Time">Time:</label>
-            <input disabled class="form-control" asp-for="Time" value="@ViewBag.apt.Time" />
+            <input type="hidden" asp-for="AppointmentId" value="@Model.AppointmentId" />
         </div>
 
         <div class="form-group">
-            <label asp-for="Date">Date:</label>
-            <input disabled class="form-control" asp-for="Date" value="@ViewBag.apt.Date" />
+            <label asp-for="Time">Time:</label>
+            <input disabled class="form-control" asp-for="Time" value="@Model.Time" />
+            <input type="hidden" asp-for="Time" value="@Model.Time" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date">Day:</label>
+            <input disabled class="form-control" asp-for="Date" value="@Model.Date" />
+            <input type="hidden" asp-for="Date" value="@Model.Date" />
         </div>
 
         <div class="form-group">
             <label asp-for="GroupName">Group Name:</label>
-            <input class="form-control" asp-for="GroupName" value="@ViewBag.apt.GroupName" /><br />
+            <input class="form-control" asp-for="GroupName" value="@Model.GroupName" /><br />
         </div>
 
         <div class="form-group">
             <label asp-for="GroupSize">Size of Group:</label>
-            <input class="form-control" asp-for="GroupSize" type="number" max="15" value="@ViewBag.apt.GroupSize" /><br />
+            <input class="form-control" asp-for="GroupSize" type="number" max="15" value="@Model.GroupSize" /><br />
         </div>
 
         <div class="form-group">
             <label asp-for="Email">Email:</label>
-            <input class="form-control" type="email" asp-for="Email" value="@ViewBag.apt.Email" /><br />
+            <input class="form-control" type="email" asp-for="Email" value="@Model.Email" /><br />
         </div>
 
         <div class="form-group">
             <label asp-for="Phone">Phone:</label>
-            <input class="form-control" asp-for="Phone" value="@ViewBag.apt.Phone" /><br />
+            <input class="form-control" asp-for="Phone" value="@Model.Phone" /><br />
         </div>
 
         <button class="btn btn-outline-primary btn-primary" type="submit">Submit</button>

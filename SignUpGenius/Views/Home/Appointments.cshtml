@@ -5,7 +5,7 @@
 
     <thead class="color-byu">
         <tr>
-            <th>Date</th>
+            <th>Day</th>
             <th>Time</th>
             <th>Group Name</th>
             <th>Group Size</th>
@@ -30,7 +30,7 @@
                     <a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="EditForm" asp-route-aptid="@a.AppointmentId">Edit</a>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="DeletePage" asp-route-aptid="@a.AppointmentId">Delete</a>
                 </td>
             </tr>
         }

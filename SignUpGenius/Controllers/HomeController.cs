@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SignUpGenius.Models;
 using SignUpGenius.Models.ViewModels;
@@ -31,12 +32,12 @@ namespace SignUpGenius.Controllers
         {
             ViewBag.AppointmentTimes = repoT.AppointmentTimes.ToList();
 
-            int pageSize = 12;
+            int pageSize = 13;
 
             var x = new TimeViewModel
             {
                 Times = repoT.AppointmentTimes
-                .Where(x => x.Time == time || time == null)
+                //.Where(x => x.Time == time || time == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -63,17 +64,18 @@ namespace SignUpGenius.Controllers
             return View(new Appointment());
         }
 
-        //[HttpGet]
-        //public IActionResult SignUpForm()
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         public IActionResult SignUpForm(Appointment a)
         {
+            var x = repoT.AppointmentTimes
+                .Single(t => (t.Time == a.Time && t.Date == a.Date));
+
+            x.Available = false;
+
+            repoT.SaveTime(x);
+
             repo.CreateAppointment(a);
-            //repo.SaveAppointment(a);
+
             return RedirectToAction("Index");
         }
 
@@ -88,5 +90,54 @@ namespace SignUpGenius.Controllers
 
             return View(x);
         }
+
+        [HttpGet]
+        public IActionResult EditForm(int aptId)
+        {
+            var appointment = repo.Appointments.Single(x => x.AppointmentId == aptId);
+
+            return View("EditForm", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult EditForm(Appointment a)
+        {
+            repo.SaveAppointment(a);
+
+            return RedirectToAction("Appointments");
+        }
+
+        [HttpGet]
+        public IActionResult DeletePage(int aptId)
+        {
+            var appointment = repo.Appointments.Single(x => x.AppointmentId == aptId);
+
+            return View("Delete", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Appointment a)
+        {
+            var apt = repo.Appointments.Single(x => x.AppointmentId == a.AppointmentId);
+
+            var x = repoT.AppointmentTimes
+                .Single(t => (t.Time == apt.Time && t.Date == apt.Date));
+
+            x.Available = true;
+
+            repoT.SaveTime(x);
+
+            repo.DeleteAppointment(apt);
+
+            return RedirectToAction("Appointments");
+        }
+
+        //[HttpGet]
+        //public IActionResult Delete(int aptid)
+        //{
+        //    repo.DeleteAppointment(x => aptid);
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }
